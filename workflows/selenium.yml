@@ -27,6 +27,6 @@ jobs:
         python selenium_test.py || echo "Selenium tests failed"
         if [ $? -ne 0 ]; then
           echo "Selenium tests failed, sending email notification"
-          echo "Selenium tests failed" | mail -s "Selenium Tests Failed" -a "From: Your Name <your@gmail.com>" -a "Content-Type: text/html" your@gmail.com --smtp-address smtp.gmail.com --smtp-user your@gmail.com --smtp-password ${{ secrets.GMAIL_PASSWORD }}
+          echo "Selenium tests failed" | mail -s "Selenium Tests Failed" -a "From: Your Name <aashishjangir1123@gmail.com>" -a "Content-Type: text/html" your@gmail.com --smtp-address smtp.gmail.com --smtp-user your@gmail.com --smtp-password ${{ secrets.GMAIL_PASSWORD }}
           exit 1
         fi
