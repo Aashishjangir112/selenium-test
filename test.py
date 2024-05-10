@@ -1,3 +1,4 @@
+import os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -13,3 +14,9 @@ def test_search():
     time.sleep(5)  # Wait for search results
     assert "GitHub" in driver.title
     driver.quit()
+
+    if os.environ.get("GITHUB_ACTIONS"):
+        print("Selenium tests failed, sending email notification")
+        os.system(
+            'echo "Selenium tests failed" | mail -s "Selenium Tests Failed" -a "From: Your Name <your@gmail.com>" -a "Content-Type: text/html" your@gmail.com --smtp-address smtp.gmail.com --smtp-user your@gmail.com --smtp-password $GMAIL_PASSWORD'
+        )
